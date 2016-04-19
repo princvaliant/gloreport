@@ -1,3 +1,5 @@
 # gloreport
 
-GLO project for generating custom reports
+MES complementary application for generating highly customized reports.
+It exposes API for initializing aggregation and data analisys as well as retrieving results in different 
+formats (JSON, CSV, EXCEL, Extjs charts etc.)
