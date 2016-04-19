@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3986126040">
+    <data-source source="LOCAL" name="gloreport dev" uuid="f916ae0c-b828-4e01-a2fc-b8cd314c64e4">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://calserver04:3306/glo?autoReconnect=true</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>dfc7dfd3dfd9dfdbdfc6</user-password>
+      <libraries>
+        <library>
+          <url>file://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.24/mysql-connector-java-5.1.24.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>
+
