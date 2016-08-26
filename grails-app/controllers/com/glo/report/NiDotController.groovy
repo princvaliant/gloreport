@@ -42,7 +42,7 @@ class NiDotController {
             }
         }
 
-        XSSFWorkbook workbook = utilService.exportExcel(results, "")
+        XSSFWorkbook workbook = utilService.exportExcel(results, "", null)
 
         def fHeader = "attachment; filename=NiDotSpectrums.xlsx"
         response.setHeader("Content-disposition", fHeader)

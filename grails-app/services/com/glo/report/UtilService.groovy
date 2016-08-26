@@ -277,11 +277,11 @@ class UtilService {
 		result
 	}
 
-    def exportExcel (List objList, String formatting) {
-        return exportExcel(objList, formatting, null)
+    def exportExcel (List objList, String formatting, String sheetName) {
+        return exportExcel(objList, formatting, null, sheetName)
     }
 
-	def exportExcel (List objList, String formatting, workbook) {
+	def exportExcel (List objList, String formatting, workbook, sheetName) {
 
         if (workbook == null) {
             workbook = new XSSFWorkbook()
@@ -291,8 +291,12 @@ class UtilService {
                 workbook.removeSheetAt(idx)
             }
         }
-        def sheet = workbook.createSheet("mesdata")
-
+        def sheet
+        if (sheetName) {
+            sheet = workbook.createSheet(sheetName)
+        } else {
+            sheet = workbook.createSheet("mesdata")
+        }
 
 		if (objList) {
 			XSSFCellStyle style = workbook.createCellStyle()
