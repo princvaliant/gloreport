@@ -277,11 +277,11 @@ class UtilService {
 		result
 	}
 
-    def exportExcel (List objList, String formatting, String sheetName) {
-        return exportExcel(objList, formatting, null, sheetName)
+    def exportExcel (List objList, String formatting, String sheetName, def cols) {
+        return exportExcel(objList, formatting, null, sheetName, cols)
     }
 
-	def exportExcel (List objList, String formatting, workbook, sheetName) {
+	def exportExcel (List objList, String formatting, workbook, sheetName, cols) {
 
         if (workbook == null) {
             workbook = new XSSFWorkbook()
@@ -308,15 +308,10 @@ class UtilService {
 				XSSFRow rowHeader = sheet.createRow(0)
 						
 				def h = 0
-                for (obj in objList) {
-                    if (obj != null) {
-                        obj.each { name, value ->
-                            XSSFCell cellHead = rowHeader.createCell((int) h)
-                            cellHead.setCellValue(new XSSFRichTextString(name))
-                            h++
-                        }
-                        break;
-                    }
+                cols.each { name ->
+                    XSSFCell cellHead = rowHeader.createCell((int) h)
+                    cellHead.setCellValue(new XSSFRichTextString(name))
+                    h++
                 }
 
 				def r = 1
@@ -324,11 +319,12 @@ class UtilService {
                     if (obj != null) {
                         XSSFRow rowData = sheet.createRow(r)
                         def c = 0
-                        obj.each { name, value ->
+                        cols.each { name ->
                             XSSFCell cellData = rowData.createCell((int) c)
+                            def value = obj[name]
                             if (value != null && name != "_id")
                                 cellData.setCellValue(value)
-                            if (formatting.contains('d') && name.toLowerCase().contains("date")) {
+                            if (name.toLowerCase().contains("date")) {
                                 cellData.setCellStyle(style)
                             }
                             c++
